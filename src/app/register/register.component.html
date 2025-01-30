@@ -1,0 +1,44 @@
+<div>
+<div>
+  <h3>Register</h3>
+</div>
+<div>
+    <form [formGroup]="registerfrom" (ngSubmit)="useSubmit()">
+        <input formControlName="first_name" type="text" placeholder="first name"/>
+        <input formControlName="last_name" type="text" placeholder="last name"/>
+        <input formControlName="email" type="email" placeholder="email"/>
+        <input formControlName="mobile" type ="text" placeholder="mobile number"/>
+        <button type="submit">Submit</button>
+        <button type="reset" (click)="restForm()">Reset</button>
+    </form>
+</div>
+
+<div>
+    <h3>User List table</h3>
+    <table>
+        <tr>
+            <td>Id</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Email</td>
+            <td>Mobile</td>
+            <td>Action</td>
+        </tr>
+        @for (user of users; track $index) {
+        <tr>
+            <td>{{user.id}}</td>
+            <td>{{user.first_name}}</td>
+            <td>{{user.last_name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.mobile}}</td>
+            <td>
+                <button type="button" (click)="edituser(user)">edit</button>
+                <button type="button" (click)="deleteuser(user.id)">delete</button>
+            </td>
+        </tr>
+    }
+    </table>
+</div>
+
+
+</div>

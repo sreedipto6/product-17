@@ -1,0 +1,47 @@
+<!-- <p>Register works!</p>
+
+Food name 
+Food quantity -->
+
+<div>
+  <div>
+    <h3>To Do List</h3>
+  </div>
+<div>
+  <form [formGroup] ="todoform"(ngSubmit)="todoSubmit()">
+<input formControlName="food_name" type="text" placeholder="Food Name" />
+<input formControlName="food_quantity" type="text" placeholder="Food Quantity" />
+<button type="submit">Submit</button>
+<button type="reset" (click)="resetForm()">Reset</button>
+  </form>
+</div>
+<div>
+
+    <h3>To Do Table</h3>
+    <table>
+        <tr>
+            <td>Food Name</td> <!--tr>td*2 formula-->
+            <td>Food Quantity</td>
+            <td>Action</td>
+        </tr>
+        @for (item of fooditems;  track $index) {
+            <tr>
+            <td>{{item.food_name}}</td>
+            <td>{{item.food_quantity}}</td>
+            <td>
+                <button type="button" (click)="editFood(item,$index)">Edit</button>
+                <button type ="button" (click)="delete(item.id)">Delete</button>
+            </td>
+        </tr>
+    }
+    </table>
+
+
+
+
+
+</div>
+
+
+
+</div>

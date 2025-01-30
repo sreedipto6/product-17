@@ -1,0 +1,47 @@
+<!-- <p>employee works!</p> -->
+
+<div class="container">
+  <div>
+    <h3 class="py-2">Employee List</h3>
+  </div>
+
+  <div>
+    <form [formGroup]="empfrom" (ngSubmit)="empsubmit()">
+      <input formControlName="emp_name" type="text" placeholder="emp name" />
+      <input formControlName="emp_sal" type="text" placeholder="emp salary" />
+      <input formControlName="departments" type="text" placeholder="departments"/>
+      <input formControlName="age" type="text" placeholder="age" />
+      <button type="submit">Submit</button>
+      <button type="reset" (click)="resetForm()">Reset</button> 
+    </form>
+  </div>
+<hr/>
+  <div>
+    <h3>Emp List</h3>
+    <table>
+      <tr>
+        <td>Id</td>
+        <td>Emp Name</td>
+        <td>Emp Salary</td>
+        <td>Departments</td>
+        <td>Age</td>
+        <td>Action</td>
+      </tr>
+      @for (emp of employees; track $index) {
+      <tr>
+        <td>{{ emp.id }}</td>
+        <td>{{ emp.emp_name }}</td>
+        <td>{{ emp.emp_sal }}</td>
+        <td>{{ emp.departments }}</td>
+        <td>{{ emp.age }}</td>
+        <td>
+                   <button type ="button" (click)="editemp(emp,$index)">Edit</button>|
+                   <button type ="button" (click)="delemp(emp.id)">Delete</button>
+
+            </td>
+        <td></td>
+      </tr>
+      }
+    </table>
+  </div>
+</div>
